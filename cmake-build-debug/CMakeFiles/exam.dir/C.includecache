@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/nedmk/CLionProjects/exam/main.c
+stdio.h
+-
+stdlib.h
+-
+conio.h
+-
+string.h
+-
+malloc.h
+-
+memory.h
+-
+math.h
+-
+new.h
+-
+

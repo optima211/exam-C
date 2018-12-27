@@ -1,0 +1,3 @@
+C:/Users/nedmk/CLionProjects/exam/cmake-build-debug/CMakeFiles/exam.dir
+C:/Users/nedmk/CLionProjects/exam/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/nedmk/CLionProjects/exam/cmake-build-debug/CMakeFiles/rebuild_cache.dir
