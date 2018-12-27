@@ -38,19 +38,19 @@ int main() {
     while (1) {
         puts("1 - new list");
         puts("2 - view list");
-        puts("3 - add to head");
-        puts("4 - find and correct");
-        puts("5 - find group");
-        puts("6 - save list to file");
+//        puts("3 - add to head");
+//        puts("4 - find and correct");
+        puts("3 - find group");
+//        puts("6 - save list to file");
         puts("0 - exit");
         c = _getch();
         switch(c) {
             case '1':createlist();break;
             case '2':viewlist(); break;
-            case '3':add(); break;
-            case '4':find(); break;
-            case '5':findGroup();break;
-            case '6':save();break;
+//            case '3':add(); break;
+//            case '4':find(); break;
+            case '3':findGroup();break;
+//            case '6':save();break;
             case '0':return 0;
             default: printf("incorrect mode %d\n",c);
         }
@@ -134,13 +134,13 @@ void findGroup(void) {
     scanf_s("%s", groups,20);
     while(p != NULL){
 
-        printf("\n%s %s\n",p->surname,p->group);
-        if(groups==p->group){printf("\n%s %s\n",p->surname,p->group);}
+        if(strcmp(p->group, groups) == 0){
+            printf("\n%s %s\n",p->surname,p->group);
         for (i = 0;i < 5;i++)
             printf("%s:  %d\n",p->spiszach[i].prname,p->spiszach[i].prmark);
         printf("\n********************\n");
+    }
         p = p->next;
-//        }else {printf("\nStudent in this group not found!\n");}
     }
     printf ("\nRecords: %d\n",GetRecords());
 }
