@@ -59,8 +59,12 @@ int main() {
 }
 
 void createlist(void) {
+    printf("\n Create new file? - Y/N");
+    int c = _getch();
+    if ((c == 'y') || (c == 'Y')){
     head = tail = NULL;
-    printf ("\nRecords: %d\n",GetRecords());
+    FILE *output = fopen(FILE_NAME, "w");
+    printf ("\nRecords: %d\n",GetRecords());}
 }
 
 void viewlist(void) {
@@ -129,12 +133,14 @@ void findGroup(void) {
     printf("\nEnter group:\n");
     scanf_s("%s", groups,20);
     while(p != NULL){
-        if(groups==p->group){
+
         printf("\n%s %s\n",p->surname,p->group);
+        if(groups==p->group){printf("\n%s %s\n",p->surname,p->group);}
         for (i = 0;i < 5;i++)
             printf("%s:  %d\n",p->spiszach[i].prname,p->spiszach[i].prmark);
         printf("\n********************\n");
-        p = p->next;}else {printf("\nStudent in this group not found!\n");}
+        p = p->next;
+//        }else {printf("\nStudent in this group not found!\n");}
     }
     printf ("\nRecords: %d\n",GetRecords());
 }
