@@ -23,7 +23,7 @@ void createlist(void);
 void viewlist(void);
 void add(void);
 void find(void);
-void del(void);
+void findGroup(void);
 void save(void);
 void load(void);
 int GetRecords();
@@ -40,7 +40,7 @@ int main() {
         puts("2 - view list");
         puts("3 - add to head");
         puts("4 - find and correct");
-        puts("5 - delete information about students with bad marks");
+        puts("5 - find group");
         puts("6 - save list to file");
         puts("0 - exit");
         c = _getch();
@@ -49,7 +49,7 @@ int main() {
             case '2':viewlist(); break;
             case '3':add(); break;
             case '4':find(); break;
-            case '5':del();break;
+            case '5':findGroup();break;
             case '6':save();break;
             case '0':return 0;
             default: printf("incorrect mode %d\n",c);
@@ -82,7 +82,7 @@ void add(void) {
     int i;
     p = (struct spis *) malloc(sizeof(struct spis));
     printf("\n Surname: ");    scanf_s("%s", p->surname,20);
-    printf(" \n Last name: ");    scanf_s("%s", p->group,20);
+    printf(" \n Group: ");    scanf_s("%s", p->group,20);
     for(i = 0;i < 5;i++)
     {
         printf(" Subject %d: ", i);        scanf("%s", p->spiszach[i].prname);
@@ -121,29 +121,20 @@ void find(void) {
     printf ("\nRecords: %d\n",GetRecords());
 }
 
-void del(void) {
-    struct spis *p, *pn;
-    char c;
-    int i,n;
-    printf("Are you sure? - Y/N\n");
-    c = _getch();
-    if ((c != 'y') && (c != 'Y'))
-        return;
+void findGroup(void) {
+    struct spis *p;
+    int i;
+    char groups[20];
     p = head;
-    while (p != NULL) {
-        pn = p->next;
-        n = 0;
-        for(i = 0;i < 5;i++)
-            if (p->spiszach[i].prmark < 3)
-                n++;
-        if (n > 2){
-            if (p->prev != NULL)
-                p->prev->next = p->next;
-            if (p->next != NULL)
-                p->next->prev = p->prev;
-            free(p);
-        }
-        p = pn;
+    printf("\nEnter group:\n");
+    scanf_s("%s", groups,20);
+    while(p != NULL){
+        if(groups==p->group){
+        printf("\n%s %s\n",p->surname,p->group);
+        for (i = 0;i < 5;i++)
+            printf("%s:  %d\n",p->spiszach[i].prname,p->spiszach[i].prmark);
+        printf("\n********************\n");
+        p = p->next;}else {printf("\nStudent in this group not found!\n");}
     }
     printf ("\nRecords: %d\n",GetRecords());
 }
